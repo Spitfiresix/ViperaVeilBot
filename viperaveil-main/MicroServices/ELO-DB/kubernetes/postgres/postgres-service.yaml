@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-viperaveilelo
+  namespace: postgres
+  labels:
+    app: postgres-viperaveilelo
+spec:
+  ports:
+  - name: tcp5437
+    port: 5437
+    protocol: TCP
+    targetPort: 5432
+  externalIPs:
+    - 10.40.0.80
+  selector:
+    app: postgres-viperaveilelo
+  sessionAffinity: None
+  type: ClusterIP

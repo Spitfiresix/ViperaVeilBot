@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: mediacms/mediacms:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: app-volume
+          mountPath: /home/mediacms.io/mediacms/
+        env:
+        - name: ENABLE_CELERY_BEAT
+          value: "no"
+        - name: ENABLE_CELERY_SHORT
+          value: "no"
+        - name: ENABLE_CELERY_LONG
+          value: "no"
+        - name: ENABLE_MIGRATIONS
+          value: "no"
+      volumes:
+      - name: app-volume
+        hostPath:
+          path: /path/to/your/local/directory

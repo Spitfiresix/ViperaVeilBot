@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block title %}Team{% endblock %} {% block
+content %}
+
+<div class="align-middle" type="image/jpg" style="
+    overflow: hidden;
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+  ">
+  <img src="/static/images/SNEKBanner.png" style="width: 100%" />
+</div>
+<hr />
+
+<h1 class="text-dark">Dev Team</h1>
+<div class="d-flex flex-wrap justify-content-center">
+  {% for discorduser in dev_list %}
+  <div class="col-md-3 justify-content-center" style="width:400px;min-width:400px;max-width:400px;">
+    <div class="card m-3 bg-light">
+      <div class="preview-image" style="top:-50%;">
+        <img class="card-img-top preview-image-img circular" style="height:100%;flex-shrink:0;"
+          src='{{discorduser.avatar}}'>
+      </div>
+      <div class="card-body p-0">
+        <div class="row p-0 my-2 mx-0">
+          <div class="col">
+            <div class="d-inline-flex my-auto mb-2 item-label align-middle">
+              <a class="">ViperaVeil
+              </a>
+            </div>
+            <nobr>
+              <h5 class="d-inline my-auto card-text mb-0 align-middle text-truncate">{{discorduser.name}}</h5>
+            </nobr>
+            <p style="font-size: 0.75rem;">{{discorduser.role}}</p>
+            <!--<p class="my-0 text-maxlines-2" style="min-height:48px;">TBC</p>-->
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<h1 class="text-dark">Our Team</h1>
+<div class="d-flex flex-wrap justify-content-center">
+  {% for discorduser in staff_list %}
+  <div class="col-md-3 justify-content-center" style="width:400px;min-width:400px;max-width:400px;">
+    <div class="card m-3 bg-light">
+      <div class="preview-image" style="top:-50%;">
+        <img class="card-img-top preview-image-img circular" style="height:100%;flex-shrink:0;"
+          src='{{discorduser.avatar}}'>
+      </div>
+      <div class="card-body p-0">
+        <div class="row p-0 my-2 mx-0">
+          <div class="col">
+            <div class="d-inline-flex my-auto mb-2 item-label align-middle">
+              <a class="">ViperaVeil
+              </a>
+            </div>
+            <nobr>
+              <h5 class="d-inline my-auto card-text mb-0 align-middle text-truncate">{{discorduser.name}}</h5>
+            </nobr>
+            <p style="font-size: 0.75rem;">{{discorduser.role}}</p>
+            <!--<p class="my-0 text-maxlines-2" style="min-height:48px;">TBC</p>-->
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

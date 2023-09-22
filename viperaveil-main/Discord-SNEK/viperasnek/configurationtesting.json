@@ -1,0 +1,23 @@
+{
+    "playlistLimit": "0",
+    "sponsorblock": true,
+    
+    "spotifyClientId": "a0439f01ccf94158a04e02255ae2e784",
+    "spotifyClientSecret": "6ee67c6e16674e309aebd72b311b69a9",
+
+    "soundcloudClientId": "oUAZOUnuAAgRGSrrP5uGRMadJzmZzjap",
+
+    "dblToken": "",
+
+    "lavalinkHost": "localhost",
+    "lavalinkPort": 2333,
+    "lavalinkRestUri": "http://localhost:2333",
+    "lavalinkPassword": "7xwlf2r08mhz",
+    "lavalinkIdentifier": "Redshift",
+    "lavalinkRegion": "uk_south",
+
+    "PostgresHost": "10.40.0.80",
+    "PostgresLogin": "viperaveil",
+    "PostgresPasword": "7xwlf2r08mhz",
+    "PostgresDatabase": "viperaveil"
+}

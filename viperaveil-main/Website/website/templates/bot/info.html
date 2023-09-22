@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Pipelines{% endblock %} {% block content %}
+  <div class="container">
+    <h2>Vipera Veil Pipelines</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-1">Service</div>
+          <div class="col col-2">Build</div>
+          <div class="col col-3">Postgres Deployment</div>
+          <div class="col col-4">Service Deployment</div>
+        </li>
+        <li class="table-row">
+          <div class="col col-1" data-label="Service"><a class="link" href="https://discord.gg/gabiz">Discord Bot</a></div>
+          <div class="col col-2" data-label="Build"><img aria-label="Pipeline" src="https://dev.azure.com/RedshiftEnt/Redshift-CICD/_apis/build/status/Spitfiresix.viperaveil?branchName=main"/></div>
+          <div class="col col-3" data-label="Postgres Deployment"><img aria-label="Release" src="https://vsrm.dev.azure.com/RedshiftEnt/_apis/public/Release/badge/511bfc9e-7101-4e45-afd3-211e47cad514/4/6"/></div>
+          <div class="col col-4" data-label="Service Deployment"><img aria-label="Release" src="https://vsrm.dev.azure.com/RedshiftEnt/_apis/public/Release/badge/511bfc9e-7101-4e45-afd3-211e47cad514/5/9"/></div>
+        </li>
+        <li class="table-row">
+          <div class="col col-1" data-label="Service"><a class="link" href="https://www.viperaveil.net/api">API</a></div>
+          <div class="col col-2" data-label="Build"><img aria-label="Pipeline" src="https://dev.azure.com/RedshiftEnt/Redshift-CICD/_apis/build/status/Vipera%20Veil/Vipera%20Veil%20API?branchName=main" /></div>
+          <div class="col col-3" data-label="Postgres Deployment"><img aria-label="Release" src="https://vsrm.dev.azure.com/RedshiftEnt/_apis/public/Release/badge/511bfc9e-7101-4e45-afd3-211e47cad514/5/8"/></div>
+          <div class="col col-4" data-label="Service Deployment"><img aria-label="Release" src="https://vsrm.dev.azure.com/RedshiftEnt/_apis/public/Release/badge/511bfc9e-7101-4e45-afd3-211e47cad514/5/9"/></div>
+        </li>
+        <li class="table-row">
+          <div class="col col-1" data-label="Service"><a class="link" href="https://veil.azurewebsites.net/">React</a></div>
+          <div class="col col-2" data-label="Build"><img aria-label="Pipeline" src="https://dev.azure.com/RedshiftEnt/Redshift-CICD/_apis/build/status/Vipera%20Veil/Vipera%20Veil%20React%20App?branchName=main"/></div>
+          <div class="col col-3" data-label="Postgres Deployment"> </div>
+          <div class="col col-4" data-label="Service Deployment"><img aria-label="Release" src="https://vsrm.dev.azure.com/RedshiftEnt/_apis/public/Release/badge/511bfc9e-7101-4e45-afd3-211e47cad514/3/4"/></div>
+        </li>
+        <li class="table-row">
+          <div class="col col-1" data-label="Service"><a class="link" href="https://hub.docker.com/repository/docker/awesomejack295/lavalink">Lavalink</a></div>
+          <div class="col col-2" data-label="Build"><img aria-label="Pipeline" src="https://dev.azure.com/RedshiftEnt/Redshift-CICD/_apis/build/status/Lavalink?branchName=main"/></div>
+          <div class="col col-3" data-label="Postgres Deployment"> </div>
+          <div class="col col-4" data-label="Service Deployment"> </div>
+        </li>
+    </ul>
+  </div>
+  {% endblock %}

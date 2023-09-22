@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  padding: 20px;
+  /* padding-top: 30px; */
+}
+

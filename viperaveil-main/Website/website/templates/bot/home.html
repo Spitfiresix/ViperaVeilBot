@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Vipera Veil{% endblock %} {% block content
+  %}
+  <div class="video-background">
+    <div class="video-foreground">
+      <div class="iframe-container">
+        <div id="player"></div>
+      </div>
+      <script src="/static/js/yt-embed.js"></script>
+    </div>
+  </div>
+  <div class="text-vv-dark-green text-center" style="padding-top:10%;padding-bottom:20%;">
+      <h1 class="font-weight-bold text-vv-title-shadow">WELCOME TO VIPERA VEIL</h1>
+      <br>
+      <h5 class="font-weight-light text-vv-body-shadow">We are a Star Citizen Clan mostly focused on PVP.</h5>
+      <br>
+      <br>
+      <a href="{{ url_for('bot.login')}}"><button class="btn btn-outline-vv-dark-green text-vv-body-shadow" href="/discord"><i class="fa fa-plus-circle pr-2"></i>Sign Up</button></a>
+  </div>
+  
+  {% endblock %}

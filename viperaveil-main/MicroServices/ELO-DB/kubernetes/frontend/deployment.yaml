@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vipera-elo-db
+  namespace: viperaveil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vipera-elo-db
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: vipera-elo-db
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - image: rgsingle/eloservice:latest
+        name: vipera-elo-db
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 80
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        ports:
+          - containerPort: 80
+            name: tcp80
+            protocol: TCP
+          - containerPort: 443
+            name: tcp443
+            protocol: TCP
+        env:
+          - name: Database
+            value: >-
+              Host=postgres-viperaveilelo.postgres.svc.cluster.local:5437;Username=viperaveilelo;Password=7xwlf2r08mhz;Database=viperaveilelo
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+        resources:
+          requests:
+            cpu: 50m
+            memory: 52Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+      restartPolicy: Always

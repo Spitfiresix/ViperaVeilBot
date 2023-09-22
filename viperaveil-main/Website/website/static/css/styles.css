@@ -1,0 +1,288 @@
+/* Global Styling */
+
+/* Page contents */
+
+.wrapper {
+    flex:1;
+}
+
+/* Global tooltip wrapper*/
+.tooltip-wrapper {
+    display: inline; /* display: block works as well */
+}
+  
+.tooltip-wrapper .btn[disabled] {
+    /* don't let button block mouse events from reaching wrapper */
+    pointer-events: none;
+}
+
+.hover-zoom {
+    transition: all .2s ease-in-out;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.02);
+}
+
+/* Home page styling */
+.scrolled-up {
+    background-color:rgba(52,58,64, 0)!important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.scrolled-down {
+    background-color:rgba(52,58,64, 1.0)!important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#particle-div {
+    z-index: 100;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.path {
+    top:0;
+    height: 100%; 
+    position:absolute; 
+    width:100%;
+    left:0; 
+    z-index:100;
+    -webkit-clip-path: url(#clipPath1);
+    clip-path: url(#clipPath1);
+}
+
+.bg-path {
+    top:0;
+    height: 100%; 
+    position:absolute; 
+    width:100%;
+    left:0; 
+    z-index:100;
+    background-color: rgba(52,58,64, 0.8);
+    fill: rgba(52,58,64, 0.8);
+}
+
+.bg-path0 {
+    height: 20rem; 
+    position:absolute; 
+    width:100%;
+    left:0; 
+    z-index:100;
+    background-color: rgba(52,58,64, 1);
+    fill: rgba(52,58,64, 1);
+    -webkit-clip-path: url(#bg-clipPath0);
+    clip-path: url(#bg-clipPath0);
+}
+
+.bg-path1 {
+    -webkit-clip-path: url(#bg-clipPath1);
+    clip-path: url(#bg-clipPath1);
+}
+
+.bg-path2 {
+    -webkit-clip-path: url(#bg-clipPath2);
+    clip-path: url(#bg-clipPath2);
+}
+
+.bg-path3 {
+    -webkit-clip-path: url(#bg-clipPath3);
+    clip-path: url(#bg-clipPath3);
+}
+
+/* Profile page styling*/
+.preview-image-placeholder {
+    height:150px;
+    width:150px;
+    min-width:100px;
+}
+
+/* .preview-image {
+    width:100%;
+    object-fit:cover;
+    position:relative;
+    border-radius: 0.25rem;
+    height:auto;
+    min-height:400px;
+    padding-top: 100%;
+} */
+
+.preview-image {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.preview-image:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
+
+.preview-image-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    line-height:100%;
+    height:100%;
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin: auto;
+}
+
+.preview-action-icon {
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: gray;
+}
+
+/* Browse page styling */
+
+.inline-header {
+    position: absolute;
+    left: 0.5rem;
+    top: -0.7rem;
+    padding: 0 0.5rem;
+    cursor: text;
+    background-color: white;
+}
+
+/* Admin page styling */
+
+.folder:active,
+.folder:focus,
+.folder:checked,
+.folder:hover {
+    background-color: rgba(121, 212, 255, 0.33);
+}
+
+#images-folder:focus > div > .folder {
+    background-color: rgba(121, 212, 255, 0.33);
+}
+
+#uploads-folder:focus > div > .folder {
+    background-color: rgba(121, 212, 255, 0.33);
+}
+
+.file:focus > div > .folder {
+    background-color: rgba(121, 212, 255, 0.33);
+}
+
+/* Queue page styling */
+
+.responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    padding: 2% 1%;
+    /* display: flex; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 12px;
+    flex:0 1 auto;
+    /* position: relative; */
+  }
+  .responsive-table .table-header {
+      background-color: #2e3136;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #aaaaaa;
+      padding-right: 5%;
+      padding-top: 2%;
+    }
+  .responsive-table .table-row {
+    background-color: #424549;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    color: rgb(158, 158, 158);
+    text-align: center;
+  }
+  .responsive-table .table-row-topper {
+    background-color: #686d74;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    color: rgb(252, 249, 249);
+  }
+  .responsive-table .col-1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    line-height:100%;
+    height:100%;
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin: auto;
+  }
+  .responsive-table .col-2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    line-height:100%;
+    height:100%;
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin: auto;
+  }
+  .responsive-table .col-3 {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    line-height:100%;
+    height:100%;
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin: auto;
+  }
+  .responsive-table .col-4 {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    line-height:100%;
+    height:100%;
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin: auto;
+  }
+
+  /* Login Page Styling */
+
+  .login {
+  }

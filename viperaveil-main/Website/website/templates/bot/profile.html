@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block content %}
+    <!-- outer container for flex box -->
+    <div class="d-flex flex-row clearfix">
+      <!-- first column (sidebar) -->
+      <div class="col-md-4 d-flex flex-column flex-shrink-0 p-3" style="width: 300px;min-width:300px;max-width:300px;">
+        <h3 class="d-flex mb-md-0 me-md-auto link-dark text-secondary" style="padding: 0">
+          Profile
+        </h3>
+        <hr />
+        <!-- begin tabs -->
+        <ul class="nav nav-pills flex-column mb-auto" id="v-pills-tab" role="tablist">
+          <li>
+            <a class="nav-link" href="#manage-account" data-toggle="tab"><i class="fa fa-cogs"
+                style="padding-right: 0.5rem"></i>Manage Account</a>
+          </li>
+        </ul>
+      </div>
+    
+      <!-- second column (all uploads) -->
+      <div class="col-md-8 tab-content clearfix d-flex flex-column flex-shrink-0 p-3">
+    
+        <div class="tab-pane" id="manage-account">
+          <div class="d-block" style="height:38px;margin-bottom:24px;">
+    
+          </div>
+    
+          <!-- show all account settings for this user -->
+          <h1>Manage account page... WIP</h1>
+        </div>
+    
+      </div>
+    </div>
+    {% endblock %}

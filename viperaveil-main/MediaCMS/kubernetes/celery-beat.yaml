@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: celery-beat
+spec:
+  containers:
+  - name: celery-beat
+    image: mediacms/mediacms:latest
+    volumeMounts:
+    - name: app-volume
+      mountPath: /home/mediacms.io/mediacms/
+    env:
+    - name: ENABLE_UWSGI
+      value: "no"
+    - name: ENABLE_NGINX
+      value: "no"
+    - name: ENABLE_CELERY_SHORT
+      value: "no"
+    - name: ENABLE_CELERY_LONG
+      value: "no"
+    - name: ENABLE_MIGRATIONS
+      value: "no"
+    readinessProbe:
+      exec:
+        command:
+        - pg_isready
+        - -U
+        - mediacms
+      initialDelaySeconds: 10
+      periodSeconds: 10

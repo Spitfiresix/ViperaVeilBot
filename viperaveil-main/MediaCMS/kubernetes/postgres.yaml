@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: postgres:13
+        volumeMounts:
+        - name: db-volume
+          mountPath: /var/lib/postgresql/data/
+        env:
+        - name: POSTGRES_USER
+          value: mediacms
+        - name: POSTGRES_PASSWORD
+          value: mediacms
+        - name: POSTGRES_DB
+          value: mediacms
+      volumes:
+      - name: db-volume
+        hostPath:
+          path: /path/to/your/local/postgres_data

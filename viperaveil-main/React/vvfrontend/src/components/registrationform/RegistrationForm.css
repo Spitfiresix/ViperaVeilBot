@@ -1,0 +1,26 @@
+.form-div {
+  font-size: calc(10px + 2vmin);
+  padding: 100px;
+  margin: 1px;
+  transition: 0.3s;
+}
+.registrationform {
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  background-color: white;
+  padding: 100px;
+  margin: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.registrationform:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+.controlPadTop {
+  padding-top: 10px;
+}

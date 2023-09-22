@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viperaveil
+  namespace: viperaveil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: viperaveil
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: viperaveil
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - image: awesomejack295/viperaveil
+        name: viperaveil
+        imagePullPolicy: Always
+        ports:
+         - containerPort: 5000
+           name: tcp5000
+           protocol: TCP
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+      imagePullSecrets:
+       - name: dockersecret
+      restartPolicy: Always

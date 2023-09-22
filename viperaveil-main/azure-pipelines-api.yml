@@ -1,0 +1,105 @@
+trigger:
+  batch: 'true'
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - Website/*
+      - azure-pipelines-api.yml
+
+resources:
+- repo: self
+
+stages:
+- stage: Build_ViperaVeilAPI_Image
+  displayName: Build ViperaVeilAPI image
+  jobs:
+  - job: Build_ViperaVeilAPI_Image
+    displayName: Build ViperaVeilAPI image
+    pool:
+      name: Redshift-OnPrem-Linux
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Building ViperaVeil API Image
+      inputs:
+        command: buildAndPush
+        containerRegistry: 'DockerHub-awesomejack295'
+        repository: 'awesomejack295/viperaveilapi'
+        dockerfile: './Website/Dockerfile'
+        tags: latest
+    - task: CmdLine@2
+      displayName: Cleaning up images older than 24H
+      inputs:
+       script: 'docker system prune -a --force --filter "until=24h"' 
+
+    - task: CmdLine@2
+      displayName: Cleaning up unneeded images
+      inputs:
+       script: 'docker system prune -f'
+
+# - stage: Deploy_ViperaVeilAPI_images
+#   displayName: Deploy ViperaVeil API images
+#   jobs:
+#   - job: Deploy_ViperaVeilAPI_images
+#     displayName: Deploy ViperaVeil API images
+#     pool:
+#       name: RS-03-KUB-01
+#       vmImage: ubuntu-latest
+#     steps:
+#     - task: KubectlInstaller@0
+#       displayName: Installing latest Kubectl
+#       inputs:
+#         kubectlVersion: 'latest'
+        
+#     - task: KubernetesManifest@0
+#       displayName: Deploying Postgres ConfigMap
+#       inputs:
+#         action: 'deploy'
+#         kubernetesServiceConnection: 'RS-03-KUB-01'
+#         namespace: 'postgres'
+#         manifests: Website/kubernetes/postgres/postgres-configmap.yaml
+
+#     - task: KubernetesManifest@0
+#       displayName: Deploying Postgres Container
+#       inputs:
+#         action: 'deploy'
+#         kubernetesServiceConnection: 'RS-03-KUB-01'
+#         namespace: 'postgres'
+#         manifests: Website/kubernetes/postgres/postgres-deployment.yaml
+
+#     - task: KubernetesManifest@0
+#       displayName: Deploying Postgres Service
+#       inputs:
+#         action: 'deploy'
+#         kubernetesServiceConnection: 'RS-03-KUB-01'
+#         namespace: 'postgres'
+#         manifests: Website/kubernetes/postgres/postgres-service.yaml
+
+#     - task: Kubernetes@1
+#       displayName: Restart existing ViperaVeilAPI Deployment
+#       inputs:
+#        connectionType: 'Kubernetes Service Connection'
+#        kubernetesServiceEndpoint: 'RS-03-KUB-01'
+#        namespace: 'viperaveil'
+#        command: 'rollout'
+#        arguments: 'restart deployment viperaveilapi'
+
+#     - task: KubernetesManifest@0
+#       displayName: Deploying ViperaVeilAPI Containers
+#       inputs:
+#         action: 'deploy'
+#         kubernetesServiceConnection: 'RS-03-KUB-01'
+#         namespace: 'viperaveil'
+#         manifests: Website/kubernetes/website/deployment.yaml
+#         imagePullSecrets: 'dockersecret'
+
+#     - task: KubernetesManifest@0
+#       displayName: Deploying ViperaVeilAPI Service
+#       inputs:
+#         action: 'deploy'
+#         kubernetesServiceConnection: 'RS-03-KUB-01'
+#         namespace: 'viperaveil'
+#         manifests: Website/kubernetes/website/service.yaml
+#         imagePullSecrets: 'dockersecret'

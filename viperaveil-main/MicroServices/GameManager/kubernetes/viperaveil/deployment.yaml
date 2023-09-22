@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viperaveilelogamemanager
+  namespace: viperaveil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: viperaveilelogamemanager
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: viperaveilelogamemanager
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - image: awesomejack295/viperaveilgamemanager
+        name: viperaveilelogamemanager
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5176
+          name: tcp5176
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+        volumeMounts:
+        - name: config
+          mountPath: /app/appsettings.json
+          subPath: appsettings.json
+      imagePullSecrets:
+      - name: dockersecret
+      restartPolicy: Always
+      volumes:
+      - configMap:
+          defaultMode: 0644
+          name: viperaveil-gamemanager-config
+        name: config

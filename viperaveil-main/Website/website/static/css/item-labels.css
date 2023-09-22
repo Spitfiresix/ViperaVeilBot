@@ -1,0 +1,56 @@
+.item-label {
+    padding:2px 5px;
+    border-radius: 0.25rem;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(190, 190, 190);
+}
+
+/* Textures */
+
+.item-label-decal {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.item-label-antenna {
+    background-color: rgba(70, 175, 0, 0.5);
+}
+
+.item-label-topper {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.item-label-ball {
+    background-color: rgba(183, 0, 255, 0.5);
+}
+
+.item-label-goal {
+    background-color: rgba(199, 162, 0, 0.5);
+}
+
+/* Presets */
+
+.item-label-striker {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.item-label-defense {
+    background-color: rgba(70, 175, 0, 0.5);
+}
+
+.item-label-dribble {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.item-label-air-dribble {
+    background-color: rgba(183, 0, 255, 0.5);
+}
+
+.item-label-challenge {
+    background-color: rgba(199, 162, 0, 0.5);
+}
+
+.item-label-race {
+    background-color: rgba(0, 176, 199, 0.5);
+}

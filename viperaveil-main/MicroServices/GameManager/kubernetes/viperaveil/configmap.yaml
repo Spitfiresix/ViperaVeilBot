@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: viperaveil-gamemanager-config
+  namespace: viperaveil
+  labels:
+    app: viperaveil-gamemanager
+data:
+    appsettings.json: >-
+      {
+        "Logging": {
+          "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+          }
+        },
+        "AllowedHosts": "*",
+        "RedisConnection": "viperaveil.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=OTcepo8sqLyTfxya7p2zCDZXlTFMrOWSZAzCaGk3HsY",
+        "ConnectionStrings": {
+          "DefaultConnection": "Host=postgres-viperaveilelo.postgres.svc.cluster.local:5437;Username=viperaveilelo;Password=7xwlf2r08mhz;Database=viperaveilelo"
+        }
+      }

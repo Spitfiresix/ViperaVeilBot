@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block title %}Queue: {{totalItems}}{% endblock %} {% block content %}
+    {% if formerSong|length > 0 or currentSong|length > 0 or queueList|length > 0 %}
+        <body class="bg-dark-fill">
+            <div class="container">
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col col-1">Title</div>
+                        <div class="col col-2">Position</div>
+                        <div class="col col-3">URL</div>
+                        <div class="col col-4">Requested By</div>
+                    </li>
+                    {% for item in formerSong %}
+                    <li class="table-row">
+                        <div class="col col-1" data-label="Title">{{item.title}}</div>
+                        <div class="col col-2" data-label="Position">Just played</div>
+                        <div class="col col-3" data-label="URL"><a class="link" href={{item.track}}><img aria-label="{{item.track}}" src="{{item.thumb}}" loading="lazy" /></a></div>
+                        <div class="col col-4" data-label="Requested By">{{item.requester}}</div>
+                    </li>
+                    {% endfor %}
+                    {% for item in currentSong %}
+                    <li class="table-row-topper">
+                        <div class="col col-1" data-label="Title">{{item.title}}</div>
+                        <div class="col col-2" data-label="Position">Playing</div>
+                        <div class="col col-3" data-label="URL"><a class="link" href={{item.track}}><img aria-label="{{item.track}}" src="{{item.thumb}}" loading="lazy" /></a></div>
+                        <div class="col col-4" data-label="Requested By">{{item.requester}}</div>
+                    </li>
+                    {% endfor %}
+                    {% for item in queueList %}
+                    <li class="table-row">
+                        <div class="col col-1" data-label="Title">{{item.title}}</div>
+                        <div class="col col-2" data-label="Position">{{item.index}}</div>
+                        <div class="col col-3" data-label="URL"><a class="link" href={{item.track}}><img aria-label="{{item.track}}" src="{{item.thumb}}" loading="lazy" /></a></div>
+                        <div class="col col-4" data-label="Requested By">{{item.requester}}</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </body>
+    {% else %}
+        <div id="particles-outer" style="height: 70%; max-height:700px; position:absolute; width:100%; top: 0; left:0; text-align:center; z-index:-1; overflow:hidden;">
+            <div class="overflow-hidden position-absolute" style="min-width:3000px; width:100%; height:100%;">
+                <svg class="svg position-absolute" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <clipPath id="bg-clipPath1" clipPathUnits="objectBoundingBox">
+                        <path fill-opacity="0.8" d="M0.976,0 H0 S-0.005,0.722,-0.005,0.819 S-0.065,1,0.155,0.999 C0.284,0.991,0.372,0.802,0.481,0.802 S0.675,0.978,0.814,0.975 C1,0.972,0.981,0.878,0.981,0.847 C0.981,0.746,0.976,0,0.976,0">
+                        </path>
+                    </clipPath>
+                </svg>
+            <div class="bg-path bg-path1"></div>
+            <svg class="svg position-absolute" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <clipPath id="bg-clipPath2" clipPathUnits="objectBoundingBox">
+                    <path fill-opacity="0.8" d="M0.964,0 H0 S-0.065,1,-0.006,0.986 c0.037,-0.051,0.123,-0.168,0.206,-0.159 c0.072,0.009,0.113,0.165,0.189,0.172 c0.108,0.01,0.117,-0.14,0.223,-0.144 c0.051,-0.002,0.111,0.085,0.174,0.07 c0.07,-0.017,0.184,-0.081,0.183,-0.142 C0.968,0.668,0.964,0,0.964,0">
+                    </path>
+                </clipPath>
+            </svg>
+            <div class="bg-path bg-path2"></div>
+            <svg class="svg position-absolute" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 320">
+                <clipPath id="bg-clipPath3" clipPathUnits="objectBoundingBox">
+                    <path fill-opacity="0.8"
+                        d="M0.946,0.811 C0.996,0.722,0.94,0,0.94,0 H0 S-0.071,0.961,-0.006,0.895 C0.426,0.463,0.633,1,0.946,0.811">
+                    </path>
+                </clipPath>
+            </svg>
+            <div class="bg-path bg-path3"></div>
+            <!-- path1 -->
+            <svg class="svg position-absolute" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 320">
+                <clipPath id="clipPath1" clipPathUnits="objectBoundingBox">
+                    <path fill-opacity="0.8"
+                        d="M0.976,0 H0 S-0.005,0.722,-0.005,0.819 S-0.065,1,0.155,0.999 C0.284,0.991,0.372,0.802,0.481,0.802 S0.675,0.978,0.814,0.975 C1,0.972,0.981,0.878,0.981,0.847 C0.981,0.746,0.976,0,0.976,0">
+                    </path>
+                    <path fill-opacity="0.8"
+                        d="M0.964,0 H0 S-0.065,1,-0.006,0.986 c0.037,-0.051,0.123,-0.168,0.206,-0.159 c0.072,0.009,0.113,0.165,0.189,0.172 c0.108,0.01,0.117,-0.14,0.223,-0.144 c0.051,-0.002,0.111,0.085,0.174,0.07 c0.07,-0.017,0.184,-0.081,0.183,-0.142 C0.968,0.668,0.964,0,0.964,0">
+                    </path>
+                    <path fill-opacity="0.8"
+                        d="M0.946,0.811 C0.996,0.722,0.94,0,0.94,0 H0 S-0.071,0.961,-0.006,0.895 C0.426,0.463,0.633,1,0.946,0.811">
+                    </path>
+                </clipPath>
+            </svg>
+            <div id="particle-div1" class="path"></div>
+        </div>
+    </div>
+    
+    <div class="text-vv-dark-green text-center" style="padding-top:10%;padding-bottom:20%;">
+        <h1 class="font-weight-bold">Nothing is currently playing!</h1>
+    </div>
+    <div id="particles-enabled"></div>
+      {% endif %}
+    {% endblock %}

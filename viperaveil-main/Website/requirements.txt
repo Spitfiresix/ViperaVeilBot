@@ -1,0 +1,24 @@
+boto3
+bs4
+Flask-Compress
+Flask-Dance
+Flask-JWT-Extended
+Flask-Login
+Flask-Migrate
+flask-restx
+Flask-SQLAlchemy
+Flask-WTF
+Flask[async]
+google-api-python-client
+oauth2client
+psycopg2
+py-cord
+py3-validate-email
+pyOpenSSL
+requests
+SQLAlchemy-Utils
+SQLAlchemy
+waitress
+Werkzeug
+WTForms
+aiohttp>=3.8.5 # not directly required, pinned by Snyk to avoid a vulnerability
